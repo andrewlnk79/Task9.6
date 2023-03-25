@@ -14,6 +14,9 @@ namespace Task2
 
         static void Main(string[] args)
         {
+            CrateList();
+            ReadFromConsole();
+            Console.ReadKey();
 
 
 
@@ -33,7 +36,7 @@ namespace Task2
 
 
 
-        public List<string> CrateList()
+        public static List<string> CrateList()
         {
             List<string> list = new List<string>();
             list.Add("Петров");
@@ -65,7 +68,7 @@ namespace Task2
                 Console.WriteLine(item);
             }
         }
-        public void ReadFromConsole()
+        public static void ReadFromConsole()
         {
 
             Console.WriteLine("ввевдите номер сортировки");
@@ -76,9 +79,10 @@ namespace Task2
                 var read = int.Parse(Console.ReadLine());
                 if (read == 1)
                 {
-
+                    firstSort +=sort1;
 
                 }
+                else { secondSort+=sort2; }
 
             }
             catch (Exception)
@@ -93,11 +97,11 @@ namespace Task2
 
         //A_ZHeadler sort2 = new A_ZHeadler(SortZ_A);
         #endregion
-        public Action<List<string>> sort1 = SortA_Z;
-        public Action<List<string>> sort2 = SortZ_A;
+        public static Action<List<string>> sort1 = SortA_Z;
+        public static Action<List<string>> sort2 = SortZ_A;
         
-        public event Action<List<string>> firstSort =SortA_Z;
-        public event Action<List<string>> secondSort =SortZ_A;
+        public static event Action<List<string>> firstSort =SortA_Z;
+        public static event Action<List<string>> secondSort =SortZ_A;
 
 
 
