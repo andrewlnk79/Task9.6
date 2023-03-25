@@ -14,7 +14,7 @@ namespace Task2
 
         static void Main(string[] args)
         {
-            
+
 
 
 
@@ -87,10 +87,13 @@ namespace Task2
             }
 
         }
-        public  delegate void A_ZHeadler(List<string> list);
-        A_ZHeadler sort1 = SortA_Z;
+        //public  delegate void A_ZHeadler(List<string> list);
+        //A_ZHeadler sort1 = SortA_Z;
 
-        A_ZHeadler sort2 = new A_ZHeadler(SortZ_A);
+        //A_ZHeadler sort2 = new A_ZHeadler(SortZ_A);
+        public Action<List<string>> sort1 = SortA_Z;
+        public Action<List<string>> sort2 = SortZ_A;
+
 
 
 
