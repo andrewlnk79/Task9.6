@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Task9._6
+namespace Task1
 {
-    internal class Program
+    internal class MyExeption:Exception
     {
-        static void Main(string[] args)
+        public MyExeption(string message): base(message)  
         {
-
+            
         }
     }
 }
