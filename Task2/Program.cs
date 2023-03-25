@@ -14,80 +14,87 @@ namespace Task2
 
         static void Main(string[] args)
         {
-          public delegate void A_Z();
-
-
-    }
+            
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-    public List<string> CrateList()
-    {
-        List<string> list = new List<string>();
-        list.Add("Петров");
-        list.Add("Сидоров");
-        list.Add("Иванов");
-        list.Add("Васечкин");
-        list.Add("Алабаев");
-        return list;
-    }
-
-    public void SortA_Z(List<string> list)
-    {
-        if (list is null)
-        {
-            throw new ArgumentNullException(nameof(list));
         }
 
-        foreach (var item in list)
-        {
-            list.Sort();
-            Console.WriteLine(item);
-        }
-    }
-    public void SortZ_A(List<string> list)
-    {
-        list.Reverse();
-        foreach (var item in list)
-        {
-            Console.WriteLine(item);
-        }
-    }
-    public void ReadFromConsole()
-    {
 
-        Console.WriteLine("ввевдите номер сортировки");
-        Console.WriteLine(" 1.- по алфовиту");
-        Console.WriteLine("2.- в обратном порядке");
-        try
+
+
+
+
+
+
+
+
+
+
+
+
+        public List<string> CrateList()
         {
-            var read = int.Parse(Console.ReadLine());
-            if (read == 1)
+            List<string> list = new List<string>();
+            list.Add("Петров");
+            list.Add("Сидоров");
+            list.Add("Иванов");
+            list.Add("Васечкин");
+            list.Add("Алабаев");
+            return list;
+        }
+
+        public static void SortA_Z(List<string> list)
+        {
+            if (list is null)
             {
+                throw new ArgumentNullException(nameof(list));
+            }
+
+            foreach (var item in list)
+            {
+                list.Sort();
+                Console.WriteLine(item);
+            }
+        }
+        public static void SortZ_A(List<string> list)
+        {
+            list.Reverse();
+            foreach (var item in list)
+            {
+                Console.WriteLine(item);
+            }
+        }
+        public void ReadFromConsole()
+        {
+
+            Console.WriteLine("ввевдите номер сортировки");
+            Console.WriteLine(" 1.- по алфовиту");
+            Console.WriteLine("2.- в обратном порядке");
+            try
+            {
+                var read = int.Parse(Console.ReadLine());
+                if (read == 1)
+                {
 
 
+                }
+
+            }
+            catch (Exception)
+            {
+                throw new MyExeption("вы неправильно ввели запрос");
             }
 
         }
-        catch (Exception)
-        {
-            throw new MyExeption("вы неправильно ввели запрос");
-        }
+        public  delegate void A_ZHeadler(List<string> list);
+        A_ZHeadler sort1 = SortA_Z;
+
+        A_ZHeadler sort2 = new A_ZHeadler(SortZ_A);
+
+
 
     }
-
-}
 }
 
 
