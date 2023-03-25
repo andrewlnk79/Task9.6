@@ -87,13 +87,17 @@ namespace Task2
             }
 
         }
+        #region
         //public  delegate void A_ZHeadler(List<string> list);
         //A_ZHeadler sort1 = SortA_Z;
 
         //A_ZHeadler sort2 = new A_ZHeadler(SortZ_A);
+        #endregion
         public Action<List<string>> sort1 = SortA_Z;
         public Action<List<string>> sort2 = SortZ_A;
-
+        
+        public event Action<List<string>> firstSort =SortA_Z;
+        public event Action<List<string>> secondSort =SortZ_A;
 
 
 
