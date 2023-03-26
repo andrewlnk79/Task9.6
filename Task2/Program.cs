@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using Task1;
@@ -17,6 +18,7 @@ namespace Task2
             CrateList();
             ReadFromConsole();
             Console.ReadKey();
+
 
 
 
@@ -76,37 +78,41 @@ namespace Task2
             Console.WriteLine("2.- в обратном порядке");
             try
             {
-                var read = int.Parse(Console.ReadLine());
-                if (read == 1)
-                {
-                    firstSort +=sort1;
+                while (true) {
+                    var read = int.Parse(Console.ReadLine());
+                    if (read != 1 && read != 2) { throw new MyExeption("необходимо выбрать 1 или 2"); }
+                    if (read == 1)
+                    {
+                        firstSort += sort1;
 
-                }
-                else { secondSort+=sort2; }
+                    }
+                    else { secondSort += sort2; }
 
-            }
+
+
             catch (Exception)
             {
-                throw new MyExeption("вы неправильно ввели запрос");
+                Console.WriteLine(new MyExeption("необходимо выбрать 1 или 2"));
             }
-
         }
-        #region
-        //public  delegate void A_ZHeadler(List<string> list);
-        //A_ZHeadler sort1 = SortA_Z;
-
-        //A_ZHeadler sort2 = new A_ZHeadler(SortZ_A);
-        #endregion
-        public static Action<List<string>> sort1 = SortA_Z;
-        public static Action<List<string>> sort2 = SortZ_A;
         
-        public static event Action<List<string>> firstSort =SortA_Z;
-        public static event Action<List<string>> secondSort =SortZ_A;
+    
+    #region
+    //public  delegate void A_ZHeadler(List<string> list);
+    //A_ZHeadler sort1 = SortA_Z;
 
+    //A_ZHeadler sort2 = new A_ZHeadler(SortZ_A);
+    #endregion
+    public static Action<List<string>> sort1 = SortA_Z;
+    public static Action<List<string>> sort2 = SortZ_A;
 
+    public static event Action<List<string>> firstSort = SortA_Z;
+    public static event Action<List<string>> secondSort = SortZ_A;
+
+}
 
     }
-}
+
 
 
 
