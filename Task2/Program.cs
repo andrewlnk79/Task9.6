@@ -15,103 +15,56 @@ namespace Task2
 
         static void Main(string[] args)
         {
-            CrateList();
-            ReadFromConsole();
+            var surnames = new Surnames();
+            ReadFromConsole read = new ReadFromConsole();
+            while (true)
+            {
+
+                try
+                {
+
+
+                    read.ReadConsoleNum();
+
+
+
+
+
+
+                }
+                catch (Exception)
+                {
+
+                    Console.WriteLine(new MyExeption("необходимо выбрать 1 или 2"));
+                }
+                read.PushNumberHandler += (number) =>
+                {
+
+
+                    if (number == 1)
+                    {
+                        Surnames.SortA_Z(Surnames.CrateList());
+                    }
+                    else
+                    {
+                        Surnames.SortZ_A(Surnames.CrateList());
+                    }
+
+                };
+            }
             Console.ReadKey();
 
 
 
 
-
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-        public static List<string> CrateList()
-        {
-            List<string> list = new List<string>();
-            list.Add("Петров");
-            list.Add("Сидоров");
-            list.Add("Иванов");
-            list.Add("Васечкин");
-            list.Add("Алабаев");
-            return list;
-        }
-
-        public static void SortA_Z(List<string> list)
-        {
-            if (list is null)
-            {
-                throw new ArgumentNullException(nameof(list));
-            }
-
-            foreach (var item in list)
-            {
-                list.Sort();
-                Console.WriteLine(item);
-            }
-        }
-        public static void SortZ_A(List<string> list)
-        {
-            list.Reverse();
-            foreach (var item in list)
-            {
-                Console.WriteLine(item);
-            }
-        }
-        public static void ReadFromConsole()
-        {
-
-            Console.WriteLine("ввевдите номер сортировки");
-            Console.WriteLine(" 1.- по алфовиту");
-            Console.WriteLine("2.- в обратном порядке");
-            try
-            {
-                while (true) {
-                    var read = int.Parse(Console.ReadLine());
-                    if (read != 1 && read != 2) { throw new MyExeption("необходимо выбрать 1 или 2"); }
-                    if (read == 1)
-                    {
-                        firstSort += sort1;
-
-                    }
-                    else { secondSort += sort2; }
-
-
-
-            catch (Exception)
-            {
-                Console.WriteLine(new MyExeption("необходимо выбрать 1 или 2"));
-            }
-        }
-        
-    
-    #region
-    //public  delegate void A_ZHeadler(List<string> list);
-    //A_ZHeadler sort1 = SortA_Z;
-
-    //A_ZHeadler sort2 = new A_ZHeadler(SortZ_A);
-    #endregion
-    public static Action<List<string>> sort1 = SortA_Z;
-    public static Action<List<string>> sort2 = SortZ_A;
-
-    public static event Action<List<string>> firstSort = SortA_Z;
-    public static event Action<List<string>> secondSort = SortZ_A;
-
-}
 
     }
+}
+
+
 
 
 

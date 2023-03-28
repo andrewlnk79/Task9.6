@@ -24,10 +24,10 @@ namespace Task2
             {
                 throw new ArgumentNullException(nameof(list));
             }
-
+            list.Sort();
             foreach (var item in list)
             {
-                list.Sort();
+                
                 Console.WriteLine(item);
             }
         }
@@ -39,8 +39,7 @@ namespace Task2
                 Console.WriteLine(item);
             }
         }
-        public static Action<List<string>> sort1 = SortA_Z;
-        public static Action<List<string>> sort2 = SortZ_A;
+       
 
     }
 }

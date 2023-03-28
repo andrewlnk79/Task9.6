@@ -9,36 +9,33 @@ namespace Task2
 {
     internal class ReadFromConsole
     {
-        public static void ReadConsole()
+        internal void ReadConsoleNum()
         {
             Console.WriteLine("ввевдите номер сортировки");
             Console.WriteLine(" 1.- по алфовиту");
             Console.WriteLine("2.- в обратном порядке");
-            try
-            {
-                while (true)
-                {
-                    int number = int.Parse(Console.ReadLine());
-                    if (number != 1 && number != 2) 
-                    {
-                        throw new MyExeption("необходимо выбрать 1 или 2");
-                    }
-                    PushNumber(int number);
 
 
-                }
 
-            }
-            catch (Exception)
-            {
-                Console.WriteLine(new MyExeption("необходимо выбрать 1 или 2"));
-            }
+            int number = int.Parse(Console.ReadLine());
+            if (number != 1 && number != 2)
+                throw new MyExeption("необходимо выбрать 1 или 2");
+
+            ReadConsole(number);
+
+
+
         }
-        public virtual void ReadConsole(int number)
+        protected virtual void ReadConsole(int number)
         {
-            PushNumberHeadler.Invoke(number);
+            PushNumberHandler?.Invoke(number);
         }
         public delegate void PushNumber(int number);
-        public event PushNumber PushNumberHeadler;
+        public event PushNumber PushNumberHandler;
+
+
     }
+
 }
+
+
