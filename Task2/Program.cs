@@ -17,6 +17,21 @@ namespace Task2
         {
             var surnames = new Surnames();
             ReadFromConsole read = new ReadFromConsole();
+            read.PushNumberHandler += (number) =>
+            {
+
+
+                if (number == 1)
+                {
+                    Surnames.SortA_Z(Surnames.CrateList());
+                }
+
+                else if (number == 2)
+                {
+                    Surnames.SortZ_A(Surnames.CrateList());
+                }
+
+            };
             while (true)
             {
 
@@ -37,20 +52,7 @@ namespace Task2
 
                     Console.WriteLine(new MyExeption("необходимо выбрать 1 или 2"));
                 }
-                read.PushNumberHandler += (number) =>
-                {
-
-
-                    if (number == 1)
-                    {
-                        Surnames.SortA_Z(Surnames.CrateList());
-                    }
-                    else
-                    {
-                        Surnames.SortZ_A(Surnames.CrateList());
-                    }
-
-                };
+                
             }
             Console.ReadKey();
 
